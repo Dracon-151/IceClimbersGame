@@ -13,8 +13,11 @@ public class Player : MonoBehaviour
     private SpriteRenderer sprtR;
     private Rigidbody2D body;
     [SerializeField] private LayerMask floor;
-    private bool isTouchingFloor;
+    private bool isTouchingFloor = false;
+    private bool canDoubleJump = true;
+    private float delay = 0.25f;
     private float speed = 1.6f;
+    private CircleCollider2D hitboxFloor;
 
     //a los componentes inicializar arriba y en la funcion start localizarlos, en el control busca dentro de la escena un objeto
     //de tipo control que es el script
@@ -25,6 +28,7 @@ public class Player : MonoBehaviour
         control = GameObject.FindObjectOfType<Controls>();
         sprtR = this.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
+        hitboxFloor = this.GetComponent<CircleCollider2D>();
         body = this.GetComponent<Rigidbody2D>();
     }
 
@@ -32,36 +36,57 @@ public class Player : MonoBehaviour
     {
         animations();
         movement();
+
+        delay -= Time.deltaTime;
     }
 
     //Funcion para el movimiento
     private void movement()
     {
-        body.velocity = new Vector2(control.direction.x, body.velocity.y) * speed;
-        Vector2 position = new Vector2(transform.position.x, transform.position.y - 0.3f);
-        Vector2 size = new Vector2(0.1f, 0.1f);
+        if (control.direction.magnitude > 0.01f)
+        {
+            body.velocity = new Vector2(control.direction.x * speed, body.velocity.y);
+        }
+        else
+        {
+            if (isTouchingFloor)
+            {
+                if (control.direction.x == 0)
+                {
+                    body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, 0.15f), body.velocity.y);
+                }
+            }
+        }
 
-        if (Physics2D.OverlapBox(position, size, 0).IsTouchingLayers(floor))
+        if (hitboxFloor.IsTouchingLayers(floor))
         {
             isTouchingFloor = true;
+            canDoubleJump = true;
+            anim.SetBool("DJump", false);
         }
         else
         {
             isTouchingFloor = false;
         }
 
-        jump();
+        if (control.direction.y > 0)
+        {
+            jump();
+        }
     }
 
     private void jump()
     {
-        if (isTouchingFloor && control.direction.y>0)
+        if (isTouchingFloor)
         {
-            body.velocity = Vector2.up * speed;
+            body.velocity = new Vector2(body.velocity.x, speed * 2);
+            delay = 0.25f;
         }
-        else
+        else if(canDoubleJump && !isTouchingFloor && delay < 0)
         {
-
+            body.velocity = new Vector2(body.velocity.x, speed * 2);
+            canDoubleJump = false;
+            anim.SetBool("DJump", true);
         }
     }
 
@@ -78,9 +103,6 @@ public class Player : MonoBehaviour
 
         //Este parametro va a depender de si est�s tocando el suelo o no
         anim.SetBool("Floor", isTouchingFloor);
-
-        //Se debe volver true cuando presionas el doble salto (solo se necesita que sea true durante un frame)
-        anim.SetBool("DJump", false);
 
         //Se debe volver true cuando recibes da�o (solo se necesita que sea true durante un frame)
         anim.SetBool("Hit", false);
