@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
         if (control.direccion.x < 0) sprtR.flipX = true;
         else if (control.direccion.x > 0) sprtR.flipX = false;
 
+        //Modificación de prueba sólo para darle push
+        int var = 0;
         
         //Parametros de las animaciones
 
