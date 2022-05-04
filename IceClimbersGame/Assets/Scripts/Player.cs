@@ -8,16 +8,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private LayerMask floor;
+
     private Controls control;
     private Animator anim;
     private SpriteRenderer sprtR;
     private Rigidbody2D body;
-    [SerializeField] private LayerMask floor;
     private bool isTouchingFloor = false;
     private bool canDoubleJump = true;
-    private float delay = 0.25f;
+    private float delayDoubleJump = 0.25f;
+    private float delayHit = 0.5f;
     private float speed = 1.6f;
-    private CircleCollider2D hitboxFloor;
+    private CapsuleCollider2D hitboxFloor;
 
     //a los componentes inicializar arriba y en la funcion start localizarlos, en el control busca dentro de la escena un objeto
     //de tipo control que es el script
@@ -28,7 +30,7 @@ public class Player : MonoBehaviour
         control = GameObject.FindObjectOfType<Controls>();
         sprtR = this.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
-        hitboxFloor = this.GetComponent<CircleCollider2D>();
+        hitboxFloor = this.GetComponent<CapsuleCollider2D>();
         body = this.GetComponent<Rigidbody2D>();
     }
 
@@ -37,7 +39,8 @@ public class Player : MonoBehaviour
         animations();
         movement();
 
-        delay -= Time.deltaTime;
+        delayDoubleJump -= Time.deltaTime;
+        delayHit -= Time.deltaTime;
     }
 
     //Funcion para el movimiento
@@ -80,9 +83,9 @@ public class Player : MonoBehaviour
         if (isTouchingFloor)
         {
             body.velocity = new Vector2(body.velocity.x, speed * 2);
-            delay = 0.25f;
+            delayDoubleJump = 0.25f;
         }
-        else if(canDoubleJump && !isTouchingFloor && delay < 0)
+        else if(canDoubleJump && !isTouchingFloor && delayDoubleJump < 0)
         {
             body.velocity = new Vector2(body.velocity.x, speed * 2);
             canDoubleJump = false;
@@ -103,8 +106,20 @@ public class Player : MonoBehaviour
 
         //Este parametro va a depender de si est�s tocando el suelo o no
         anim.SetBool("Floor", isTouchingFloor);
+    }
 
-        //Se debe volver true cuando recibes da�o (solo se necesita que sea true durante un frame)
-        anim.SetBool("Hit", false);
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6 && delayHit < 0)
+        {
+            body.velocity = body.velocity + (new Vector2(transform.position.x - collision.transform.position.x,
+                transform.position.y - collision.transform.position.y).normalized * speed / 2);
+            delayHit = 0.5f;
+            anim.SetBool("Hit", true);
+        }
+        else
+        {
+            anim.SetBool("Hit", false);
+        }
     }
 }
