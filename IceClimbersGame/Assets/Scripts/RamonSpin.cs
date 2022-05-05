@@ -1,3 +1,6 @@
+//Script que controla el movimiento del enemigo sierra
+//Creado por Alexis Alvarado.
+//Fecha: 03/05/2022
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
