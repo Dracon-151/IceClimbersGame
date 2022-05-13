@@ -72,7 +72,8 @@ public class Controls: MonoBehaviour
                     }
                     if (Physics2D.OverlapPoint(initial, controls) == hitboxs[2])
                     {
-                        up = 1;
+                        if (i.phase == TouchPhase.Began) up = 1;
+                        else up = 0;
                     }
                 }
 

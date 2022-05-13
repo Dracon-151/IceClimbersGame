@@ -82,12 +82,12 @@ public class Player : MonoBehaviour
     {
         if (isTouchingFloor)
         {
-            body.velocity = new Vector2(body.velocity.x, speed * 2);
+            body.velocity = new Vector2(body.velocity.x, speed * 3);
             delayDoubleJump = 0.25f;
         }
         else if(canDoubleJump && !isTouchingFloor && delayDoubleJump < 0)
         {
-            body.velocity = new Vector2(body.velocity.x, speed * 2);
+            body.velocity = new Vector2(body.velocity.x, speed * 3);
             canDoubleJump = false;
             anim.SetBool("DJump", true);
         }
