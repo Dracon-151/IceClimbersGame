@@ -5,24 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ScenesChange : MonoBehaviour
 {
-    public void Game()
+    public void Load(int i)
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(i);
     }
-    public void Creditos()
+
+    public void close()
     {
-        SceneManager.LoadScene("Creditos");
-    }
-    public void Historia()
-    {
-        SceneManager.LoadScene("Historia");
-    }
-    public void Menu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
-    public void Tutorial()
-    {
-        SceneManager.LoadScene("Tutorial");
+        Application.Quit();
     }
 }
