@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level_part_0: {fileID: 1941866038815740438, guid: b7a7d0c3409c6f24aa2b843ac160f50e, type: 3}
   level_part_1: {fileID: 3701999748250764557, guid: d9905db3bced8b14bbd6f1b537fc9279, type: 3}
+  player: {fileID: 0}
