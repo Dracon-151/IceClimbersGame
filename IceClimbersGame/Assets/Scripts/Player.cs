@@ -5,6 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class Player : MonoBehaviour
     private float delayHit = 0.5f;
     private float speed = 1.6f;
     private CapsuleCollider2D hitboxFloor;
+    public Text scoreText;
+
+    private int score = 0;
 
     //a los componentes inicializar arriba y en la funcion start localizarlos, en el control busca dentro de la escena un objeto
     //de tipo control que es el script
@@ -120,6 +124,26 @@ public class Player : MonoBehaviour
         else
         {
             anim.SetBool("Hit", false);
+        }
+
+        if(collision.gameObject.layer == 7)
+        {
+            if(collision.gameObject.name == "Apple")
+            {
+                score += 1;
+            }
+            else if (collision.gameObject.name == "Pineapple")
+            {
+                score += 3;
+            }
+            else if (collision.gameObject.name == "Melon")
+            {
+                score += 5;
+            }
+
+            scoreText.text = score.ToString();
+             
+            Destroy(collision.gameObject);
         }
     }
 }
