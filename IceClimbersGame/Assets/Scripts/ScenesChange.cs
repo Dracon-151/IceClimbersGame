@@ -14,4 +14,18 @@ public class ScenesChange : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void historia()
+    {
+        if(PlayerPrefs.GetInt("primerJuego") == 0)
+        {
+            SceneManager.LoadScene(2);
+            PlayerPrefs.SetInt("primerJuego", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
 }

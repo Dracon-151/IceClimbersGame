@@ -29,9 +29,9 @@ public class Controls: MonoBehaviour
 
 
         //Se posicionan los botones de acuerdo a las dimensiones de la pantalla
-        hitboxs[0].transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 2 / 20, Screen.height * 2.5f / 20, 22));
-        hitboxs[1].transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 4.5f / 20, Screen.height * 2.5f / 20, 22));
-        hitboxs[2].transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 18f / 20, Screen.height * 2.5f / 20, 22));
+        hitboxs[0].transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 2 / 20, Screen.height * 3f / 20, 22));
+        hitboxs[1].transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 4.5f / 20, Screen.height * 3f / 20, 22));
+        hitboxs[2].transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 18f / 20, Screen.height * 3f / 20, 22));
     }
 
     void Update()
