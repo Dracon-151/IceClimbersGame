@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private CapsuleCollider2D hitboxFloor;
     public Text scoreText;
 
-    private int score = 0;
+    public int score = 0;
 
     //a los componentes inicializar arriba y en la funcion start localizarlos, en el control busca dentro de la escena un objeto
     //de tipo control que es el script
@@ -130,15 +130,15 @@ public class Player : MonoBehaviour
         {
             if(collision.gameObject.name == "Apple")
             {
-                score += 1;
+                score += 100;
             }
             else if (collision.gameObject.name == "Pineapple")
             {
-                score += 3;
+                score += 250;
             }
             else if (collision.gameObject.name == "Melon")
             {
-                score += 5;
+                score += 500;
             }
 
             scoreText.text = score.ToString();
