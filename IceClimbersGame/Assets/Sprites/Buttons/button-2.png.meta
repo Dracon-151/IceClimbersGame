@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:IceClimbersGame/Assets/Sprites/Buttons/button-2.png.meta
 guid: baf243e232e559b4591c2dc7e9734e90
+=======
+guid: f424ffaa012241e459cd1efe72f4bc1e
+>>>>>>> Stashed changes:IceClimbersGame/Assets/Sprites/Menu/button-dashboard.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
