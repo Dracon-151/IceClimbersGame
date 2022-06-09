@@ -5,9 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class ScenesChange : MonoBehaviour
 {
+    public void Start()
+    {
+        //PlayerPrefs.SetInt("primerJuego", 0);
+        if(SceneManager.GetActiveScene().buildIndex == 0) PlayerPrefs.SetInt("ultimaEscena", 0);
+        PlayerPrefs.Save();
+    }
     public void Load(int i)
     {
         SceneManager.LoadScene(i);
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
     }
 
     public void close()
@@ -19,9 +29,9 @@ public class ScenesChange : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("primerJuego") == 0)
         {
-            SceneManager.LoadScene(2);
-            PlayerPrefs.SetInt("primerJuego", 1);
+            PlayerPrefs.SetInt("ultimaEscena", 1);
             PlayerPrefs.Save();
+            SceneManager.LoadScene(2);
         }
         else
         {

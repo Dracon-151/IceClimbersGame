@@ -1,4 +1,4 @@
-//Script para controlar el player
+ //Script para controlar el player
 //Creado por Alexis Alvarado. Modificado por Daniel Sepulveda
 //Fecha: 02/05/2022
 
@@ -21,9 +21,16 @@ public class Player : MonoBehaviour
     private float delayHit = 0.5f;
     private float speed = 1.6f;
     private CapsuleCollider2D hitboxFloor;
-    public Text scoreText;
+    private int alturainicial;
+    private int calculoAltura;
+    private int aumento;
+    private float bonusAltura = 0;
+    private int printScore;
 
-    public int score = 0;
+    public Text scoreText;
+    public Text alturaText;
+    public float score = 0;
+    public int altura = 0;
 
     //a los componentes inicializar arriba y en la funcion start localizarlos, en el control busca dentro de la escena un objeto
     //de tipo control que es el script
@@ -36,6 +43,8 @@ public class Player : MonoBehaviour
         anim = this.GetComponent<Animator>();
         hitboxFloor = this.GetComponent<CapsuleCollider2D>();
         body = this.GetComponent<Rigidbody2D>();
+        alturainicial = (int) transform.position.y;
+
     }
 
     void Update()
@@ -45,6 +54,22 @@ public class Player : MonoBehaviour
 
         delayDoubleJump -= Time.deltaTime;
         delayHit -= Time.deltaTime;
+
+        calculoAltura = (int)transform.position.y - alturainicial;
+
+        if (calculoAltura > altura)
+        {
+            bonusAltura += 0.05f;
+            aumento = calculoAltura - altura;
+            score += (aumento * 8) + bonusAltura;
+            altura = calculoAltura;
+            alturaText.text = altura.ToString();
+
+            
+        }
+
+        printScore = ((int)Mathf.Floor(score));
+        scoreText.text = "" + printScore;
     }
 
     //Funcion para el movimiento
@@ -141,9 +166,16 @@ public class Player : MonoBehaviour
                 score += 500;
             }
 
-            scoreText.text = score.ToString();
+            //scoreText.text = score.ToString();
              
             Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.layer == 8)
+        {
+            GameObject.FindObjectOfType<Overlays>().death(altura, printScore);
+
+            transform.position = new Vector3(8000, -100, 0);
         }
     }
 }
