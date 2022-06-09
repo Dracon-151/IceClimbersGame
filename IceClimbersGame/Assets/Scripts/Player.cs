@@ -31,7 +31,9 @@ public class Player : MonoBehaviour
     public Text alturaText;
     public float score = 0;
     public int altura = 0;
-
+    public int frutas = 0;
+    public int tiempo = 0;
+    
     //a los componentes inicializar arriba y en la funcion start localizarlos, en el control busca dentro de la escena un objeto
     //de tipo control que es el script
 
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
 
         delayDoubleJump -= Time.deltaTime;
         delayHit -= Time.deltaTime;
+        tiempo += (int)(Time.deltaTime * 1000);
 
         calculoAltura = (int)transform.position.y - alturainicial;
 
@@ -165,8 +168,6 @@ public class Player : MonoBehaviour
             {
                 score += 500;
             }
-
-            //scoreText.text = score.ToString();
              
             Destroy(collision.gameObject);
         }
@@ -176,6 +177,36 @@ public class Player : MonoBehaviour
             GameObject.FindObjectOfType<Overlays>().death(altura, printScore);
 
             transform.position = new Vector3(8000, -100, 0);
+
+            PlayerPrefs.SetInt("Deaths", PlayerPrefs.GetInt("Deaths")+1);
+            PlayerPrefs.Save();
+            LBManager.updateScores(3);
+
+            if (PlayerPrefs.GetInt("BestScore") < printScore)
+            {
+                PlayerPrefs.SetInt("BestScore", printScore);
+                PlayerPrefs.Save();
+                LBManager.updateScores(1);
+            }
+            if (PlayerPrefs.GetInt("BestTime") < tiempo)
+            {
+                PlayerPrefs.SetInt("BestTime", tiempo);
+                PlayerPrefs.Save();
+                LBManager.updateScores(2);
+            }
+            if (PlayerPrefs.GetInt("BestHeight") < altura)
+            {
+                PlayerPrefs.SetInt("BestHeight", altura);
+                PlayerPrefs.Save();
+                LBManager.updateScores(5);
+            }
+            if (PlayerPrefs.GetInt("BestFruits") < frutas)
+            {
+                PlayerPrefs.SetInt("BestFruits", frutas);
+                PlayerPrefs.Save();
+                LBManager.updateScores(4);
+            }
+
         }
     }
 }

@@ -38,4 +38,26 @@ public class ScenesChange : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
+
+    public void lb()
+    {
+        Social.ShowLeaderboardUI();
+    }
+
+    public void achieve()
+    {
+        if(GameObject.FindObjectOfType<GPGSrvcs>().user())Social.ShowAchievementsUI();
+    }
+
+    public void login()
+    {
+        GPGSrvcs log = GameObject.FindObjectOfType<GPGSrvcs>();
+
+        if (!log.user())
+        {
+            log.login();
+            PlayerPrefs.SetFloat("Sesion", 0);
+            PlayerPrefs.Save();
+        }
+    }
 }

@@ -1,0 +1,9 @@
+lastUpgrade=01101
+proj.pluginVersion=0.11.01
+proj.AppId=955671117130
+and.BundleId=com.EndurenceProjects.IceClimbersGame
+proj.classDir=Assets
+proj.ConstantsClassName=LeaderBoardsIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--Google+Play+game+services+IDs.+Save+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--app_id--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e955671117130%3c%2fstring%3e%0d%0a++%3c%21--package_name--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.EndurenceProjects.IceClimbersGame%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+Puntuaciones--%3e%0d%0a++%3cstring+name%3d%22leaderboard_puntuaciones%22+translatable%3d%22false%22%3eCgkIyvq_k-gbEAIQAA%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+Total+de+muertes--%3e%0d%0a++%3cstring+name%3d%22leaderboard_total_de_muertes%22+translatable%3d%22false%22%3eCgkIyvq_k-gbEAIQAQ%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+Tiempo+de+juego--%3e%0d%0a++%3cstring+name%3d%22leaderboard_tiempo_de_juego%22+translatable%3d%22false%22%3eCgkIyvq_k-gbEAIQAg%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+Frutas+recolectadas--%3e%0d%0a++%3cstring+name%3d%22leaderboard_frutas_recolectadas%22+translatable%3d%22false%22%3eCgkIyvq_k-gbEAIQAw%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+Altura+alcanzada--%3e%0d%0a++%3cstring+name%3d%22leaderboard_altura_alcanzada%22+translatable%3d%22false%22%3eCgkIyvq_k-gbEAIQBA%3c%2fstring%3e%0d%0a%3c%2fresources%3e
+and.ClientId=
+android.SetupDone=true
