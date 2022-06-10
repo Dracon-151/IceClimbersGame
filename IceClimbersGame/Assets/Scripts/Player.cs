@@ -10,7 +10,9 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private LayerMask floor;
+    [SerializeField] private AudioClip[] clips;
 
+    private AudioSource audios;
     private Controls control;
     private Animator anim;
     private SpriteRenderer sprtR;
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
     private float bonusAltura = 0;
     private int printScore;
 
+    private bool hit = false;
     public Text scoreText;
     public Text alturaText;
     public float score = 0;
@@ -39,14 +42,15 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        Physics2D.IgnoreLayerCollision(7, 9);
         //Inicializaci�n de las variables
         control = GameObject.FindObjectOfType<Controls>();
         sprtR = this.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
-        hitboxFloor = this.GetComponent<CapsuleCollider2D>();
+        hitboxFloor = this.GetComponentInChildren<CapsuleCollider2D>();
         body = this.GetComponent<Rigidbody2D>();
         alturainicial = (int) transform.position.y;
-
+        audios = this.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -57,6 +61,8 @@ public class Player : MonoBehaviour
         delayDoubleJump -= Time.deltaTime;
         delayHit -= Time.deltaTime;
         tiempo += (int)(Time.deltaTime * 1000);
+
+        if (delayHit < 0.25f && hit) hit = false;
 
         calculoAltura = (int)transform.position.y - alturainicial;
 
@@ -78,35 +84,38 @@ public class Player : MonoBehaviour
     //Funcion para el movimiento
     private void movement()
     {
-        if (control.direction.magnitude > 0.01f)
+        if (!hit)
         {
-            body.velocity = new Vector2(control.direction.x * speed, body.velocity.y);
-        }
-        else
-        {
-            if (isTouchingFloor)
+            if (control.direction.magnitude > 0.01f)
             {
-                if (control.direction.x == 0)
+                body.velocity = new Vector2(control.direction.x * speed, body.velocity.y);
+            }
+            else
+            {
+                if (isTouchingFloor)
                 {
-                    body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, 0.15f), body.velocity.y);
+                    if (control.direction.x == 0)
+                    {
+                        body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, 0.2f), body.velocity.y);
+                    }
                 }
             }
-        }
 
-        if (hitboxFloor.IsTouchingLayers(floor))
-        {
-            isTouchingFloor = true;
-            canDoubleJump = true;
-            anim.SetBool("DJump", false);
-        }
-        else
-        {
-            isTouchingFloor = false;
-        }
+            if (hitboxFloor.IsTouchingLayers(floor))
+            {
+                isTouchingFloor = true;
+                canDoubleJump = true;
+                anim.SetBool("DJump", false);
+            }
+            else
+            {
+                isTouchingFloor = false;
+            }
 
-        if (control.direction.y > 0)
-        {
-            jump();
+            if (control.direction.y > 0)
+            {
+                jump();
+            }
         }
     }
 
@@ -114,11 +123,13 @@ public class Player : MonoBehaviour
     {
         if (isTouchingFloor)
         {
+            audios.PlayOneShot(clips[0]);
             body.velocity = new Vector2(body.velocity.x, speed * 3);
             delayDoubleJump = 0.25f;
         }
         else if(canDoubleJump && !isTouchingFloor && delayDoubleJump < 0)
         {
+            audios.PlayOneShot(clips[0]);
             body.velocity = new Vector2(body.velocity.x, speed * 3);
             canDoubleJump = false;
             anim.SetBool("DJump", true);
@@ -144,9 +155,11 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 && delayHit < 0)
         {
-            body.velocity = body.velocity + (new Vector2(transform.position.x - collision.transform.position.x,
-                transform.position.y - collision.transform.position.y).normalized * speed / 2);
+            audios.PlayOneShot(clips[3]);
+            body.velocity = new Vector2(transform.position.x - collision.transform.position.x,
+                transform.position.y - collision.transform.position.y).normalized * speed * 2;
             delayHit = 0.5f;
+            hit = true;
             anim.SetBool("Hit", true);
         }
         else
@@ -154,26 +167,9 @@ public class Player : MonoBehaviour
             anim.SetBool("Hit", false);
         }
 
-        if(collision.gameObject.layer == 7)
-        {
-            if(collision.gameObject.name == "Apple")
-            {
-                score += 100;
-            }
-            else if (collision.gameObject.name == "Pineapple")
-            {
-                score += 250;
-            }
-            else if (collision.gameObject.name == "Melon")
-            {
-                score += 500;
-            }
-             
-            Destroy(collision.gameObject);
-        }
-
         if(collision.gameObject.layer == 8)
         {
+            audios.PlayOneShot(clips[2]);
             GameObject.FindObjectOfType<Overlays>().death(altura, printScore);
 
             transform.position = new Vector3(8000, -100, 0);
@@ -207,6 +203,31 @@ public class Player : MonoBehaviour
                 LBManager.updateScores(4);
             }
 
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 7)
+        {
+            audios.PlayOneShot(clips[1]);
+            frutas++;
+
+            if (collision.gameObject.name == "Apple")
+            {
+                score += 100;
+            }
+            else if (collision.gameObject.name == "Pineapple")
+            {
+                score += 250;
+            }
+            else if (collision.gameObject.name == "Melon")
+            {
+                score += 500;
+            }
+
+            Destroy(collision.gameObject);
         }
     }
 }

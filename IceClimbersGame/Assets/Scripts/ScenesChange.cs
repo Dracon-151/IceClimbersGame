@@ -7,7 +7,7 @@ public class ScenesChange : MonoBehaviour
 {
     public void Start()
     {
-        //PlayerPrefs.SetInt("primerJuego", 0);
+        Application.targetFrameRate = 60;
         if(SceneManager.GetActiveScene().buildIndex == 0) PlayerPrefs.SetInt("ultimaEscena", 0);
         PlayerPrefs.Save();
     }

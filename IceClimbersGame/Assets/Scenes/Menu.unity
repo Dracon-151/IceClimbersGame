@@ -153,7 +153,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 556663480}
+  - {fileID: 692027836}
+  - {fileID: 1108987507}
+  - {fileID: 2041692623}
+  - {fileID: 2125455890}
+  - {fileID: 224562612}
+  - {fileID: 127764993}
+  - {fileID: 1653740303}
   - {fileID: 1185477938}
   m_Father: {fileID: 1632328477}
   m_RootOrder: 0
@@ -229,15 +235,15 @@ RectTransform:
   m_GameObject: {fileID: 127764992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
+  m_LocalScale: {x: 0.7499999, y: 0.7499999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 556663480}
+  m_Father: {fileID: 4194772}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: -61.4}
+  m_AnchoredPosition: {x: 44.999996, y: -142.24998}
   m_SizeDelta: {x: 67, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &127764994
@@ -284,7 +290,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 556663481}
+      - m_Target: {fileID: 699340653}
         m_TargetAssemblyTypeName: ScenesChange, Assembly-CSharp
         m_MethodName: login
         m_Mode: 1
@@ -362,15 +368,15 @@ RectTransform:
   m_GameObject: {fileID: 224562611}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
+  m_LocalScale: {x: 0.7499999, y: 0.7499999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 556663480}
+  m_Father: {fileID: 4194772}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18, y: -61.4}
+  m_AnchoredPosition: {x: -44.999996, y: -142.25}
   m_SizeDelta: {x: 67, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224562613
@@ -417,7 +423,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 556663481}
+      - m_Target: {fileID: 699340653}
         m_TargetAssemblyTypeName: ScenesChange, Assembly-CSharp
         m_MethodName: lb
         m_Mode: 1
@@ -467,62 +473,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224562611}
   m_CullTransparentMesh: 1
---- !u!1 &556663479
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 556663480}
-  - component: {fileID: 556663481}
-  m_Layer: 5
-  m_Name: Buttons
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &556663480
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556663479}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.4999998, y: 2.4999998, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 692027836}
-  - {fileID: 1108987507}
-  - {fileID: 2041692623}
-  - {fileID: 2125455890}
-  - {fileID: 224562612}
-  - {fileID: 127764993}
-  - {fileID: 1653740303}
-  m_Father: {fileID: 4194772}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -6}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &556663481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556663479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e306d7e05ee8571488accd294a65cd99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &630047410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -612,15 +562,15 @@ RectTransform:
   m_GameObject: {fileID: 692027835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4999998, y: 2.4999998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 556663480}
+  m_Father: {fileID: 4194772}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0, y: 1.2499996}
   m_SizeDelta: {x: 95.242, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692027837
@@ -667,7 +617,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 556663481}
+      - m_Target: {fileID: 699340653}
         m_TargetAssemblyTypeName: ScenesChange, Assembly-CSharp
         m_MethodName: historia
         m_Mode: 1
@@ -728,6 +678,7 @@ GameObject:
   - component: {fileID: 699340652}
   - component: {fileID: 699340651}
   - component: {fileID: 699340650}
+  - component: {fileID: 699340653}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -802,6 +753,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &699340653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699340649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e306d7e05ee8571488accd294a65cd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &808029754
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,15 +860,15 @@ RectTransform:
   m_GameObject: {fileID: 1108987506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6999999, y: 0.6999999, z: 1}
+  m_LocalScale: {x: 1.7499998, y: 1.7499998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 556663480}
+  m_Father: {fileID: 4194772}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -29.8}
+  m_AnchoredPosition: {x: 0, y: -80.49999}
   m_SizeDelta: {x: 95.242, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1108987508
@@ -952,7 +915,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 556663481}
+      - m_Target: {fileID: 699340653}
         m_TargetAssemblyTypeName: ScenesChange, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 3
@@ -1029,15 +992,15 @@ RectTransform:
   m_GameObject: {fileID: 1185477937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 45, y: 45, z: 30.1}
+  m_LocalScale: {x: 40, y: 40, z: 30.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4194772}
-  m_RootOrder: 1
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 124}
+  m_AnchoredPosition: {x: 0, y: 107}
   m_SizeDelta: {x: 7, y: 3.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1185477939
@@ -1207,15 +1170,15 @@ RectTransform:
   m_GameObject: {fileID: 1653740302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
+  m_LocalScale: {x: 0.7499999, y: 0.7499999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 556663480}
+  m_Father: {fileID: 4194772}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 139, y: 61}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -54, y: -49}
   m_SizeDelta: {x: 67, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1653740304
@@ -1262,7 +1225,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 556663481}
+      - m_Target: {fileID: 699340653}
         m_TargetAssemblyTypeName: ScenesChange, Assembly-CSharp
         m_MethodName: close
         m_Mode: 1
@@ -1340,15 +1303,15 @@ RectTransform:
   m_GameObject: {fileID: 2041692622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6999999, y: 0.6999999, z: 1}
+  m_LocalScale: {x: 1.7499998, y: 1.7499998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 556663480}
+  m_Father: {fileID: 4194772}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: -29.8}
+  m_AnchoredPosition: {x: -187.49997, y: -80.49999}
   m_SizeDelta: {x: 95.242, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2041692624
@@ -1395,7 +1358,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 556663481}
+      - m_Target: {fileID: 699340653}
         m_TargetAssemblyTypeName: ScenesChange, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 3
@@ -1473,15 +1436,15 @@ RectTransform:
   m_GameObject: {fileID: 2125455889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6999999, y: 0.6999999, z: 1}
+  m_LocalScale: {x: 1.7499998, y: 1.7499998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 556663480}
+  m_Father: {fileID: 4194772}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: -29.8}
+  m_AnchoredPosition: {x: 187.49997, y: -80.49999}
   m_SizeDelta: {x: 95.242, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2125455891
@@ -1528,7 +1491,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 556663481}
+      - m_Target: {fileID: 699340653}
         m_TargetAssemblyTypeName: ScenesChange, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 3

@@ -16,7 +16,6 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
         lastEndPosition = level_part_0.Find("EndPosition").position;
-        //Transform lastLevelPartTransform;
         
         int startingSpawnLevelParts = 0;
         for (int i = 0; i < startingSpawnLevelParts; i++)

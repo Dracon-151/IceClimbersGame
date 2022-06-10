@@ -24,11 +24,11 @@
 
 public static class LeaderBoardsIds
 {
-        public const string leaderboard_puntuaciones = "CgkIyvq_k-gbEAIQAA"; // <GPGSID>
-        public const string leaderboard_total_de_muertes = "CgkIyvq_k-gbEAIQAQ"; // <GPGSID>
-        public const string leaderboard_altura_alcanzada = "CgkIyvq_k-gbEAIQBA"; // <GPGSID>
-        public const string leaderboard_tiempo_de_juego = "CgkIyvq_k-gbEAIQAg"; // <GPGSID>
-        public const string leaderboard_frutas_recolectadas = "CgkIyvq_k-gbEAIQAw"; // <GPGSID>
+        public const string leaderboard_puntuaciones = "CgkI-PftzPYTEAIQAQ"; // <GPGSID>
+        public const string leaderboard_total_de_muertes = "CgkI-PftzPYTEAIQAg"; // <GPGSID>
+        public const string leaderboard_altura_alcanzada = "CgkI-PftzPYTEAIQAw"; // <GPGSID>
+        public const string leaderboard_tiempo_de_juego = "CgkI-PftzPYTEAIQBA"; // <GPGSID>
+        public const string leaderboard_frutas_recolectadas = "CgkI-PftzPYTEAIQBQ"; // <GPGSID>
 
 }
 

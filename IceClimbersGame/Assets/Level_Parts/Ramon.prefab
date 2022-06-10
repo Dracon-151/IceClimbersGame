@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6645082478418528075}
   - component: {fileID: 4770739751651326217}
   - component: {fileID: -5516502108699964449}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Ramon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,4 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b71fc100a78a174086d98144228d79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntos: 1500
+  puntos: 1000

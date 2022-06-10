@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: EndurenceProjects
-  productName: IceClimbersGame
+  companyName: EnduranceProjects
+  productName: ' Climber Of Madness'
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -157,7 +157,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.EndurenceProjects.IceClimbersGame
+    Android: com.EnduranceProjects.ClimberOfMadness
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -251,8 +251,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: key.keystore'
-  AndroidKeyaliasName: climberofmadness
+  AndroidKeystoreName: '{inproject}: user.keystore'
+  AndroidKeyaliasName: climb
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
