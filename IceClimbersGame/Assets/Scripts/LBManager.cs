@@ -1,3 +1,6 @@
+//Script que administra las llamadas a las tablas de clasificacion
+//Creado por Alexis Alvarado.
+//Fecha: 10/06/2022
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +8,8 @@ using GooglePlayGames;
 
 public class LBManager : MonoBehaviour
 {
+
+    //Recibe el id de la tabla y manda la solicitud de actualización a dicha tabla
     public static void updateScores(int id)
     {
         if (GameObject.FindObjectOfType<GPGSrvcs>().user())

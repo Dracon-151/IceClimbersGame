@@ -1,5 +1,5 @@
  //Script para controlar el player
-//Creado por Alexis Alvarado. Modificado por Daniel Sepulveda
+//Creado por Alexis Alvarado, Daniel Sepulveda y Eduardo Gonzalez
 //Fecha: 02/05/2022
 
 using System.Collections;

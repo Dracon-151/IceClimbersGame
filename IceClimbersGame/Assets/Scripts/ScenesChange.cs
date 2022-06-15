@@ -1,3 +1,6 @@
+//Script que controla las trancisiones entre pantallas y botones del menú
+//Creado por Alexis Alvarado y Eduardo Gonzalez.
+//Fecha: 02/06/2022
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +10,13 @@ public class ScenesChange : MonoBehaviour
 {
     public void Start()
     {
+        //Ajusta los fps de la aplicación a 60
         Application.targetFrameRate = 60;
         if(SceneManager.GetActiveScene().buildIndex == 0) PlayerPrefs.SetInt("ultimaEscena", 0);
         PlayerPrefs.Save();
     }
+    
+    //Carga la escena solicitada y desactiva la pausa
     public void Load(int i)
     {
         SceneManager.LoadScene(i);
@@ -20,11 +26,13 @@ public class ScenesChange : MonoBehaviour
         }
     }
 
+    //Cierra la aplicación
     public void close()
     {
         Application.Quit();
     }
 
+    //Detecta si es la primera vez que se abre la aplicación para mostrar la historia
     public void historia()
     {
         if(PlayerPrefs.GetInt("primerJuego") == 0)
@@ -39,25 +47,20 @@ public class ScenesChange : MonoBehaviour
         }
     }
 
+    //Muestra las tablas de clasificación
     public void lb()
     {
         Social.ShowLeaderboardUI();
     }
 
-    public void achieve()
-    {
-        if(GameObject.FindObjectOfType<GPGSrvcs>().user())Social.ShowAchievementsUI();
-    }
-
+    //Inicia sesión en Google Play
     public void login()
     {
         GPGSrvcs log = GameObject.FindObjectOfType<GPGSrvcs>();
 
-        if (!log.user())
-        {
-            log.login();
-            PlayerPrefs.SetFloat("Sesion", 0);
-            PlayerPrefs.Save();
-        }
+        PlayerPrefs.SetFloat("Sesion", 0);
+        PlayerPrefs.Save();
+        log.login();
+
     }
 }

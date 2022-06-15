@@ -1,3 +1,6 @@
+//Script que controla el menú de pausa y de mmuerte
+//Creado por Alexis Alvarado.
+//Fecha: 01/06/2022
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,18 +15,9 @@ public class Overlays : MonoBehaviour
 
     private bool activePause = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Si el juego está en ejecución, detiene la ejecución y activa el menú de pausa, desactiva el ui de juego
+    //Caso contrario continua la ejecución, desactiva el menú de pausa y activa el ui de juego
     public void pause()
     {
         activePause = !activePause;
@@ -45,6 +39,7 @@ public class Overlays : MonoBehaviour
         
     }
 
+    //Detiene la ejecución y activa el menú de muerte, desactiva el ui de juego
     public void death(int altura, int score)
     {
         activePause = true;

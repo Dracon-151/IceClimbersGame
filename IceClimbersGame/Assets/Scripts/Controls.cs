@@ -36,6 +36,7 @@ public class Controls: MonoBehaviour
 
     void Update()
     {
+        //Llama a la función de control
         normal();
     }
 

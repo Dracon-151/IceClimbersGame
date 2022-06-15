@@ -1,3 +1,6 @@
+//Script que controla las llamadas a las api de Google Play
+//Creado por Alexis Alvarado.
+//Fecha: 08/06/2022
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +18,15 @@ public class GPGSrvcs: MonoBehaviour
 
     private void Start()
     {
+        //Inicia sesión si no se ha rechazado el inicio de sesión antes
         if (PlayerPrefs.GetFloat("Sesion") == 0)
         {
             login();
         }
     }
 
+
+    //Inicia sesión en Google Play
     public void login()
     {
         if (platform == null)
@@ -40,6 +46,7 @@ public class GPGSrvcs: MonoBehaviour
         });
     }
 
+    //Devuelve true si el usuario ha iniciado sesión, sino devuelve false
     public bool user()
     {
         return Social.localUser.authenticated;

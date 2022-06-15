@@ -1,10 +1,15 @@
+//Script que controla el botón de saltar en la pantalla de historia
+//Creado por Alexis Alvarado.
+//Fecha: 03/05/2022
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SkipButton : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Detecta si es la primera vez que el jugador entra desde el botón de jugar y elimina el botón de saltar 
+    //de no ser así
+    
     void Start()
     {
         if(PlayerPrefs.GetInt("primerJuego") == 0 && PlayerPrefs.GetInt("ultimaEscena") == 1)
