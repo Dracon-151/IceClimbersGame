@@ -590,9 +590,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingSpeed: 0.5
+  choke: 0
   levels:
   - {fileID: 1648119577}
-  choke: 0
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0

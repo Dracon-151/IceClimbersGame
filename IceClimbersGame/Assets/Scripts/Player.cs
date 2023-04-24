@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sprtR;
     private Rigidbody2D body;
     private bool isTouchingFloor = false;
-    private bool canDoubleJump = true;
+    public int jumpNumber = 2;
     private float delayDoubleJump = 0.25f;
     private float delayHit = 0.5f;
     private float speed = 1.6f;
@@ -31,13 +31,16 @@ public class Player : MonoBehaviour
     private float bonusAltura = 0;
     private int printScore;
     private bool hit = false;
+    private float powerupDuration = 15;
 
     //Declaración de variables publicas.
+    public string powerup = "";
     public Text scoreText;
     public Text alturaText;
     public float score = 0;
     public int altura = 0;
     public int frutas = 0;
+    public int powerups = 0;
     public int tiempo = 0;
     
     //A los componentes inicializar arriba y en la funcion start localizarlos, en el control busca dentro de la escena un objeto
@@ -65,8 +68,17 @@ public class Player : MonoBehaviour
 
         //Declaracion del tiempo de las acciones.
         delayDoubleJump -= Time.deltaTime;
+        powerupDuration -= Time.deltaTime;
         delayHit -= Time.deltaTime;
         tiempo += (int)(Time.deltaTime * 1000);
+
+        //Quita el power up si se acaba el tiempo
+        if (powerupDuration < 0)
+        {
+            powerup = "";
+            sprtR.color = new Color(1, 1, 1);
+            Time.timeScale = 1;
+        }
 
         //Tiempo de enfiramiento para el movimiento despues de un golpe.
         if (delayHit < 0.25f && hit) hit = false;
@@ -111,11 +123,12 @@ public class Player : MonoBehaviour
                 }
             }
 
-            //Habilita el doble salto cuando se esta tocando el suelo.
+            //Reinicia el contador de saltos cuando se esta tocando el suelo.
             if (hitboxFloor.IsTouchingLayers(floor))
             {
                 isTouchingFloor = true;
-                canDoubleJump = true;
+                if(powerup == "TripleJump") jumpNumber = 3;
+                else jumpNumber = 2;
                 anim.SetBool("DJump", false);
             }
             else
@@ -134,19 +147,25 @@ public class Player : MonoBehaviour
     //Función para el salto.
     private void jump()
     {
+        float multiplier = 3;
+
+        //Aumenta la velocidad vertical del alto cuando tienes powerup de salto alto
+        if (powerup == "HighJump") multiplier = 3.45f;
+
         //Si esta tocando el suelo realiza el salto.
         if (isTouchingFloor)
         {
             audios.PlayOneShot(clips[0]);
-            body.velocity = new Vector2(body.velocity.x, speed * 3);
+            body.velocity = new Vector2(body.velocity.x, speed * multiplier);
             delayDoubleJump = 0.25f;
+            jumpNumber--;
         }
         //Si no esta tocando el suelo realiza el doble salto si es que este esta habilitado.
-        else if(canDoubleJump && !isTouchingFloor && delayDoubleJump < 0)
+        else if(jumpNumber > 0 && !isTouchingFloor && delayDoubleJump < 0)
         {
             audios.PlayOneShot(clips[0]);
-            body.velocity = new Vector2(body.velocity.x, speed * 3);
-            canDoubleJump = false;
+            body.velocity = new Vector2(body.velocity.x, speed * multiplier);
+            jumpNumber--;
             anim.SetBool("DJump", true);
         }
     }
@@ -169,8 +188,8 @@ public class Player : MonoBehaviour
     //Función que evalua las colisiones.
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Si detecta que es un obstaculo asigna la fuerza y la animacion del golpe.
-        if (collision.gameObject.layer == 6 && delayHit < 0)
+        //Si detecta que es un obstaculo asigna la fuerza y la animacion del golpe, siempre y cuando no tenga powerup de invencibilidad.
+        if (collision.gameObject.layer == 6 && delayHit < 0 && powerup != "Invencibility")
         {
             audios.PlayOneShot(clips[3]);
             body.velocity = new Vector2(transform.position.x - collision.transform.position.x,
@@ -230,10 +249,10 @@ public class Player : MonoBehaviour
 
     }
 
-    //Función para las frutas.
+    //Función para las frutas y powerup.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Evalua si la colición fue con una fruta.
+        //Evalua si la colisión fue con una fruta.
         if (collision.gameObject.layer == 7)
         {
             audios.PlayOneShot(clips[1]);
@@ -251,6 +270,47 @@ public class Player : MonoBehaviour
             else if (collision.gameObject.name == "Melon")
             {
                 score += 500;
+            }
+
+            Destroy(collision.gameObject);
+        }
+
+        //Evalua si la colisión fue con un powerup.
+        if (collision.gameObject.layer == 10)
+        {
+            audios.PlayOneShot(clips[1]);
+            powerups++;
+            powerupDuration = 15;
+            powerup = collision.gameObject.name;
+            score += 100;
+
+            if (powerup == "TripleJump" && isTouchingFloor)
+            {
+                jumpNumber = 3;
+            }
+            if(powerup == "SlowMotion")
+            {
+                Time.timeScale = 0.5f;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+
+            switch (powerup)
+            {
+                case "Invencibility":
+                    sprtR.color = new Color(0, 0.6212285f, 1);
+                    break;
+                case "SlowMotion":
+                    sprtR.color = new Color(0.8113208f, 0.248754f, 0.2656244f);
+                    break;
+                case "TripleJump":
+                    sprtR.color = new Color(0.2028747f, 0.9150943f, 0.2710767f);
+                    break;
+                case "HighJump":
+                    sprtR.color = new Color(0.9470816f, 1, 0);
+                    break;
             }
 
             Destroy(collision.gameObject);

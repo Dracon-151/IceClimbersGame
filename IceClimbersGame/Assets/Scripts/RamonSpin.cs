@@ -10,6 +10,6 @@ public class RamonSpin : MonoBehaviour
     //Rota al enemigo a 4 grados por frame
     void Update()
     {
-        transform.Rotate(0,0,-4);
+        transform.Rotate(0,0,-4 * Time.timeScale);
     }
 }

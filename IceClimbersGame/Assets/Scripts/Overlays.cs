@@ -34,7 +34,11 @@ public class Overlays : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1;
+            float timeScale = 1;
+
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().powerup == "SlowMotion") timeScale = 0.5f;
+
+            Time.timeScale = timeScale;
         }
         
     }

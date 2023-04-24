@@ -110,11 +110,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bc797b99cd50a0148af52e043002c489, type: 3}
   - {fileID: 8300000, guid: 305f4421584073e41ab4b1b6137f85e2, type: 3}
   - {fileID: 8300000, guid: 0a996f512d32b3447b06ec2c26415281, type: 3}
+  jumpNumber: 2
+  powerup: 
   scoreText: {fileID: 0}
   alturaText: {fileID: 0}
   score: 0
   altura: 0
   frutas: 0
+  powerups: 0
   tiempo: 0
 --- !u!95 &20497716686851478
 Animator:
