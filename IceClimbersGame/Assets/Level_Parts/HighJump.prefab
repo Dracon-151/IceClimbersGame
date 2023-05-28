@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1615545635542998270}
   - component: {fileID: 1615545635542998257}
   - component: {fileID: 1615545635542998256}
-  - component: {fileID: 7413652649654794872}
   m_Layer: 10
   m_Name: HighJump
   m_TagString: Untagged
@@ -102,16 +101,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.02}
   serializedVersion: 2
   m_Radius: 1.2
---- !u!114 &7413652649654794872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615545635542998269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b71fc100a78a174086d98144228d79b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puntos: 250

@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         {
             powerup = "";
             sprtR.color = new Color(1, 1, 1);
-            Time.timeScale = 1;
+            if(Time.timeScale == 0.5f) Time.timeScale = 1;
         }
 
         //Tiempo de enfiramiento para el movimiento despues de un golpe.

@@ -13,7 +13,7 @@ public class Overlays : MonoBehaviour
     [SerializeField] private GameObject[] canvasImages;
     [SerializeField] private Text[] scoreTexts;
 
-    private bool activePause = false;
+    public bool activePause = false;
 
 
     //Si el juego está en ejecución, detiene la ejecución y activa el menú de pausa, desactiva el ui de juego
